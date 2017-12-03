@@ -49,12 +49,12 @@ body {
     transition-timing-function: cubic-bezier(0, 2.3, 0.58, 1);
 }
 
-.time-label {
+/* .time-label {
     width: 30rem;
     height: 30rem;
     border: 5px;
     border-radius: 50%;
-}
+} */
 
 .second-hand {
     height: 4px;
