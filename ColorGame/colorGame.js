@@ -1,9 +1,13 @@
 var numSquares = 6;
 var colors = [];
 var pickedColor;
+var score = 0;
+var highScore = 0;
 var squares = document.querySelectorAll(".square");
 var colorDisplay = document.querySelector("#colorDisplay");
 var messageDisplay = document.querySelector("#message")
+var scoreDisplay = document.querySelector("#score")
+var highScoreDisplay = document.querySelector("#highScore")
 var h1 = document.querySelector("h1")
 var resetButton = document.querySelector("#reset");
 var modeButtons = document.querySelectorAll(".mode");
@@ -23,6 +27,10 @@ function setupModeButtons(){
             modeButtons[1].classList.remove("selected");
             this.classList.add("selected");
             this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
+            score = 0;
+            scoreDisplay.textContent = "Score: " + score;
+            highScore = 0;
+            highScoreDisplay.textContent = "Highscore: " + highScore;
             reset();
         });
     }
@@ -40,9 +48,17 @@ function setupSquares(){
                 resetButton.textContent = "Play Again?"
                 changeColors(clickedColor);
                 h1.style.backgroundColor = pickedColor;
+                score++;
+                scoreDisplay.textContent = "Score: " + score;
+                    if(score > highScore){
+                        highScore = score;
+                    }
+                highScoreDisplay.textContent = "Highscore: " + highScore;
             } else {
                 this.style.backgroundColor = "#232323";
                 messageDisplay.textContent = "Try Again";
+                score = 0;
+                scoreDisplay.textContent = "Score: " + score;
             }
         })
     }
